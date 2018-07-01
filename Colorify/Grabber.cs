@@ -4,6 +4,7 @@ using System.Drawing;
 using System.Drawing.Imaging;
 using System.Linq;
 using System.Reflection;
+using System.Text.RegularExpressions;
 using System.Windows.Forms;
 
 namespace Colorify
@@ -64,7 +65,7 @@ namespace Colorify
             // Ghetto way of making an array to a list
             List<KnownColor> colors = ((KnownColor[])Enum.GetValues(typeof(KnownColor))).ToList();
 
-            String colorName = GetClosestColor(colors, color).Name;
+            String colorName = Regex.Replace(GetClosestColor(colors, color).Name, "(\\B[A-Z])", " $1");
             Console.WriteLine(colorName);
         }
 
