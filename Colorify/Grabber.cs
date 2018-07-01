@@ -89,26 +89,11 @@ namespace Colorify
 
         /*
          * Opens a form displaying the selected color and name.
+         * Only temporary, will create a seperate form to use.
          */
         private void ShowColorInfo(Color rgb, String name)
         {
-            Form form = new Form();
-            form.StartPosition = FormStartPosition.CenterScreen;
-            form.Width = (int)Math.Floor(Screen.PrimaryScreen.Bounds.Width * 0.35);
-            form.Height = (int)Math.Floor(Screen.PrimaryScreen.Bounds.Height * 0.35);
-            form.FormBorderStyle = FormBorderStyle.None;
-            form.BackColor = rgb;
-
-            Button closeButton = new Button();
-            closeButton.Width = (int)Math.Floor(form.Width * 0.15);
-            closeButton.Height = (int)Math.Floor(form.Height * 0.15);
-            closeButton.ForeColor = Color.Black;
-            closeButton.FlatAppearance.BorderColor = Color.White;
-            closeButton.FlatAppearance.BorderSize = 1;
-            closeButton.Text = "CLOSE";
-            closeButton.MouseClick += (object sender, MouseEventArgs e) => { form.Close(); };
-            form.Controls.Add(closeButton);
-            form.Show();
+            // Show WPF-window.
         }
 
         /*
