@@ -1,11 +1,12 @@
 using System;
 using System.Collections.Generic;
 using System.Drawing;
-using System.Drawing.Imaging;
+using System.ComponentModel;
 using System.Linq;
 using System.Reflection;
 using System.Text.RegularExpressions;
 using System.Windows.Forms;
+using System.Windows.Controls;
 
 namespace Colorify
 {
@@ -94,6 +95,16 @@ namespace Colorify
         private void ShowColorInfo(Color rgb, String name)
         {
             // Show WPF-window.
+            ColorInfo window = new Colorify.ColorInfo();
+            TextBlock RGB = (TextBlock)window.FindName("RGB");
+            TextBlock HEX = (TextBlock)window.FindName("HEX");
+            TextBlock ColorName = (TextBlock)window.FindName("ColorName");
+            Grid Background = (Grid)window.FindName("Background");
+            Background.Background = new System.Windows.Media.SolidColorBrush(System.Windows.Media.Color.FromArgb(rgb.A, rgb.R, rgb.G, rgb.B));
+            RGB.Text = "RGB: (" + rgb.R + ", " + rgb.G + ", " + rgb.B + ")";
+            HEX.Text = "HEX: #" + string.Format("{0:X2}{1:X2}{2:X2}", rgb.R, rgb.G, rgb.B);
+            ColorName.Text = "COLOR: " + name;
+            window.Show();
         }
 
         /*

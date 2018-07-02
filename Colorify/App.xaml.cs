@@ -7,6 +7,7 @@ namespace Colorify
     {
         private System.Windows.Forms.NotifyIcon _notifyIcon;
         private bool _isExit;
+        Grabber grab = new Grabber();
 
         protected override void OnStartup(StartupEventArgs e)
         {
@@ -15,7 +16,7 @@ namespace Colorify
             MainWindow.Closing += MainWindow_Closing;
 
             _notifyIcon = new System.Windows.Forms.NotifyIcon();
-            _notifyIcon.DoubleClick += (s, args) => ShowMainWindow();
+            _notifyIcon.MouseClick += (s, args) => grab.GrabColor();
             _notifyIcon.Icon = Colorify.Properties.Resources.MyIcon;
             _notifyIcon.Visible = true;
 
@@ -26,7 +27,7 @@ namespace Colorify
         {
             _notifyIcon.ContextMenuStrip =
               new System.Windows.Forms.ContextMenuStrip();
-            Grabber grab = new Grabber();
+            
             _notifyIcon.ContextMenuStrip.Items.Add("Grab color").Click += (s, e) => grab.GrabColor();
             _notifyIcon.ContextMenuStrip.Items.Add("Exit").Click += (s, e) => ExitApplication();
         }
