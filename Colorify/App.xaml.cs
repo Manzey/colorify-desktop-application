@@ -1,9 +1,11 @@
 ﻿using System.Windows;
 using System.ComponentModel;
+using System.Windows.Input;
+using System.Windows.Forms;
 
 namespace Colorify
 {
-    public partial class App : Application
+    public partial class App : System.Windows.Application
     {
         private System.Windows.Forms.NotifyIcon _notifyIcon;
         private bool _isExit;
@@ -16,7 +18,13 @@ namespace Colorify
             MainWindow.Closing += MainWindow_Closing;
 
             _notifyIcon = new System.Windows.Forms.NotifyIcon();
-            _notifyIcon.MouseClick += (s, args) => grab.GrabColor();
+            _notifyIcon.MouseClick += (s, args) =>
+            {
+                if (args.Button == MouseButtons.Left) {                 
+                    grab.GrabColor();
+                }
+
+            };
             _notifyIcon.Icon = Colorify.Properties.Resources.MyIcon;
             _notifyIcon.Visible = true;
 
