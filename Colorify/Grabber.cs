@@ -7,6 +7,7 @@ using System.Reflection;
 using System.Text.RegularExpressions;
 using System.Windows.Forms;
 using System.Windows.Controls;
+using System.Windows;
 
 namespace Colorify
 {
@@ -78,13 +79,12 @@ namespace Colorify
         private void ShowTempForm()
         {
             Form form = new Form();
-            form.FormBorderStyle = FormBorderStyle.None;
-            form.WindowState = FormWindowState.Maximized;
             form.BackColor = Color.Black;
-            //form.TransparencyKey = Color.Aquamarine;
             form.Opacity = 0.25;
+            form.FormBorderStyle = FormBorderStyle.None;
+            form.Bounds = Screen.PrimaryScreen.Bounds;
+            form.TopMost = true;
             form.Show();
-
             background = form;
         }
 

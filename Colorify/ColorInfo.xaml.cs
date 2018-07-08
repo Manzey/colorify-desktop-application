@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Windows;
+using System.Windows.Input;
 
 namespace Colorify
 {
@@ -11,7 +12,7 @@ namespace Colorify
         public ColorInfo()
         {
             try { 
-                InitializeComponent();
+                InitializeComponent();                
             }
             catch(Exception e)
             {

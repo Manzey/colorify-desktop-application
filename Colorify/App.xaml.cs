@@ -2,6 +2,7 @@
 using System.ComponentModel;
 using System.Windows.Input;
 using System.Windows.Forms;
+using System.Threading;
 
 namespace Colorify
 {
